@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --black: #000000;
+    --light-brown: #d5b78f;
+  }
+body{
+    font-family: 'Oswald', sans-serif;
+    background-color: var(--black);
+    color: var(--light-brown);
+    overflow-x: hidden;
+}
+a{
+    text-decoration: none;
+    color: var(--light-brown);
+}
+.main-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('./assets/bg.png');
+
+background-size: cover;
+}
+
+.main-page__links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    margin-top: 20%;
+}
+.main-page__link{
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--black);
+    background-color: var(--light-brown);
+    width: 30vh;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.1rem;
+}
+
+
+
+.news-page{
+    display: flex;
+    flex-direction: column;
+    margin: 5% 8%;
+    align-items: end;
+}
+
+.news-page__items{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 5%;
+
+}
+.news-page__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--black);
+    color: var(--light-brown);
+    border: #d5b78f 2px solid;
+    margin: 10px;
+    padding: 25px;
+}
+
+.news-page__item__title{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.btn{
+    border: #d5b78f 2px solid;
+    background-color: var(--black);
+    color: var(--light-brown);
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+
+}
+.news-page__title{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background-color: var(--light-brown);
+    color: var(--black);
+    padding: 30px;
+    width: 35%;
+    margin-right: -10%;
+}
