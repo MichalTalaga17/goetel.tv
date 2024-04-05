@@ -25,28 +25,27 @@ a{
     align-items: center;
     height: 100vh;
     background-image: url('./assets/bg.png');
-
-background-size: cover;
+    background-size: cover;
 }
 
 .main-page__links{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 50px;
+    gap: 5%;
     margin-top: 20%;
 }
 .main-page__link{
-    font-size: 3rem;
+    font-size: 8rem;
     font-weight: 700;
     color: var(--black);
     background-color: var(--light-brown);
-    width: 30vh;
-    height: 15vh;
+    width: 40vh;
+    height: 18vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    letter-spacing: -0.1rem;
+    letter-spacing: -0.3rem;
 }
 
 
@@ -54,15 +53,18 @@ background-size: cover;
 .news-page{
     display: flex;
     flex-direction: column;
-    margin: 5% 8%;
+    padding: 5% 8%;
     align-items: end;
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .news-page__items{
     display: flex;
     justify-content: center;
     flex-direction: row;
-    gap: 10px;
+    gap: 3%;
     margin-top: 5%;
 
 }
@@ -73,34 +75,28 @@ background-size: cover;
     justify-content: center;
     background-color: var(--black);
     color: var(--light-brown);
-    border: #d5b78f 2px solid;
-    margin: 10px;
-    padding: 25px;
+    border: #d5b78f 5px solid;
+    padding: 1%;
+    min-height: 50%;
 }
 
 .news-page__item__title{
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 5%;
+}
+.news-page__item__content{
+    font-size: 2.5rem;
+    font-weight: 400;
 }
 
-.btn{
-    border: #d5b78f 2px solid;
-    background-color: var(--black);
-    color: var(--light-brown);
-    padding: 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: pointer;
 
-}
 .news-page__title{
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: 700;
-    margin-bottom: 10px;
     background-color: var(--light-brown);
     color: var(--black);
-    padding: 30px;
+    padding: 2%;
     width: 35%;
-    margin-right: -10%;
+    margin-right: -15%;
 }
