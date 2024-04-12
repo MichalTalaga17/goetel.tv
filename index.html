@@ -10,7 +10,7 @@
     <div class="main-page">
 
         <div class="main-page__links">
-            <a class="main-page__link" href=""><div class="">Aktualności</div></a>
+            <a class="main-page__link" href="#news"><div class="">Aktualności</div></a>
             <a class="main-page__link" href=""><div class="">Plan lekcji</div></a>
             <a class="main-page__link" href=""><div class="">Kierunki</div></a>
             <a class="main-page__link" href=""><div class="">Kontakt</div></a>
@@ -20,7 +20,7 @@
         <div class="news-page__title">
             <h1>Aktualności</h1>
         </div>
-        <div class="news-page__items">
+        <div class="news-page__items" id="news">
            
             
         </div>
@@ -64,7 +64,7 @@
                 item.appendChild(item_title_box);
                 item.appendChild(item_link_box)
                 
-                document.querySelector(".news-page").appendChild(item);
+                document.querySelector(".news-page__items").appendChild(item);
            
             });
          
