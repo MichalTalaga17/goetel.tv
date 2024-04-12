@@ -33,8 +33,12 @@
             const artykuly = await response.json();
             artykuly.forEach(el => {
                 let title = el["title"]["rendered"];
-                let id = el["id"]
                 
+                if(title.includes('&#8211;')){
+                    title = title.replace("&#8211;", '-')
+                }
+                let id = el["id"]
+                console.log(title); 
                 let item = document.createElement("div");
                 item.classList.add("news-page__item");
                 
@@ -61,13 +65,9 @@
                 item.appendChild(item_link_box)
                 
                 document.querySelector(".news-page").appendChild(item);
-                console.log(title);
+           
             });
-            // const title = artykul["title"]["rendered"];
-            // const latestDate = artykul["modified"];
-            // document.querySelector(".date").innerHTML = latestDate;
-            // document.querySelector(".title").innerHTML = title;
-            // document.querySelector(".root").innerHTML = content;
+         
         }
           getcontent()
     
