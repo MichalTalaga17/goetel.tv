@@ -21,43 +21,56 @@
             <h1>Aktualności</h1>
         </div>
         <div class="news-page__items">
-            <div class="news-page__item">
-                <div class="news-page__item__title">
-                    <h2>Witajcie w nowym roku szkolnym!</h2>
-                </div>
-                <div class="news-page__item__content">
-                    <p>Witajcie w nowym roku szkolnym! Mamy nadzieję, że wakacje były dla Was czasem wypoczynku i relaksu. W nowym roku szkolnym czekają na Was nowe wyzwania i możliwości. Życzymy Wam powodzenia w nauce i osiąganiu celów. Pamiętajcie, że każdy z Was ma ogromny potencjał, który warto rozwijać. Bądźcie aktywni, ciekawi świata i otwarci na nowe doświadczenia. Wierzymy, że w nowym roku szkolnym osiągniecie wiele sukcesów i spełnicie swoje marzenia. Powodzenia!</p>
-                </div>
-                <!-- <div class="news-page__item__btn btn">
-                    <a href="">Czytaj więcej</a>
-                </div> -->
-            </div>
-            <div class="news-page__item">
-                <div class="news-page__item__title">
-                    <h2>Wycieczka do Krakowa</h2>
-                </div>
-                <div class="news-page__item__content">
-                    <p>W dniach 15-17 września 2020 roku odbędzie się wycieczka do Krakowa. W programie wycieczki m.in. zwiedzanie Wawelu, Rynku Głównego, Sukiennic, Barbakanu, Plant, Kopca Kościuszki, Muzeum Narodowego, Muzeum Lotnictwa, Centrum Nauki Kopernik, Parku Wodnego, ZOO, Wieliczki, Zakopanego. Koszt wycieczki to 500 zł. Zapisy przyjmowane są w sekretariacie szkoły do 10 września 2020 roku.</p>
-                </div>
-            </div>
-            <div class="news-page__item">
-                <div class="news-page__item__title">
-                    <h2>Witajcie w nowym roku szkolnym!</h2>
-                </div>
-                <div class="news-page__item__content">
-                    <p>Witajcie w nowym roku szkolnym! Mamy nadzieję, że wakacje były dla Was czasem wypoczynku i relaksu. W nowym roku szkolnym czekają na Was nowe wyzwania i możliwości. Życzymy Wam powodzenia w nauce i osiąganiu celów. Pamiętajcie, że każdy z Was ma ogromny potencjał, który warto rozwijać. Bądźcie aktywni, ciekawi świata i otwarci na nowe doświadczenia. Wierzymy, że w nowym roku szkolnym osiągniecie wiele sukcesów i spełnicie swoje marzenia. Powodzenia!</p>
-                </div>
-            </div>
-            <div class="news-page__item">
-                <div class="news-page__item__title">
-                    <h2>Wycieczka do Krakowa</h2>
-                </div>
-                <div class="news-page__item__content">
-                    <p>W dniach 15-17 września 2020 roku odbędzie się wycieczka do Krakowa. W programie wycieczki m.in. zwiedzanie Wawelu, Rynku Głównego, Sukiennic, Barbakanu, Plant, Kopca Kościuszki, Muzeum Narodowego, Muzeum Lotnictwa, Centrum Nauki Kopernik, Parku Wodnego, ZOO, Wieliczki, Zakopanego. Koszt wycieczki to 500 zł. Zapisy przyjmowane są w sekretariacie szkoły do 10 września 2020 roku.</p>
-                </div>
-            </div>
+           
             
         </div>
     </div>
+    <script>
+        async function getcontent() {
+           
+            const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/posts/`;
+            const response = await fetch( apiUrl);
+            const artykuly = await response.json();
+            artykuly.forEach(el => {
+                let title = el["title"]["rendered"];
+                let id = el["id"]
+                
+                let item = document.createElement("div");
+                item.classList.add("news-page__item");
+                
+                let item_title_box = document.createElement("div");
+                item_title_box.classList.add("news-page__item__title");
+                
+                let item_title = document.createElement("h2");
+                item_title.innerText = title;
+                item_title_box.appendChild(item_title);
+                
+                let item_link_box = document.createElement("div");
+                item_link_box.classList.add("news-page__item__btn");
+                item_link_box.classList.add("btn");
+                
+                let item_link = document.createElement("a");
+                item_link.href = `http://127.0.0.1:5500/goetel.tv-main/json.html#${id}`;
+                item_link.innerHTML = "Czytaj więcej";
+                item_link_box.appendChild(item_link)
+
+                item_title.innerText = title;
+                item_title_box.appendChild(item_title);
+                
+                item.appendChild(item_title_box);
+                item.appendChild(item_link_box)
+                
+                document.querySelector(".news-page").appendChild(item);
+                console.log(title);
+            });
+            // const title = artykul["title"]["rendered"];
+            // const latestDate = artykul["modified"];
+            // document.querySelector(".date").innerHTML = latestDate;
+            // document.querySelector(".title").innerHTML = title;
+            // document.querySelector(".root").innerHTML = content;
+        }
+          getcontent()
+    
+            </script>
 </body>
 </html>
