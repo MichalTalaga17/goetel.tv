@@ -23,7 +23,8 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 2160px;
+    width: 3840px;
     background-image: url('./assets/bg.png');
     background-size: cover;
 }
@@ -56,8 +57,8 @@ a{
     padding: 5% 8%;
     align-items: end;
     height: 100vh;
+    width: 100vw;
     overflow-y: hidden;
-    overflow-x: hidden;
 }
 
 .news-page__items{
@@ -89,8 +90,6 @@ a{
     font-size: 2.5rem;
     font-weight: 400;
 }
-
-
 .news-page__title{
     font-size: 4rem;
     font-weight: 700;
