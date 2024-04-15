@@ -1,76 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZS im. W. Goetla w Suchej Beskidzkiej</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="main-page">
-
-        <div class="main-page__links">
-            <a class="main-page__link" href="#news"><div class="">Aktualności</div></a>
-            <a class="main-page__link" href=""><div class="">Plan lekcji</div></a>
-            <a class="main-page__link" href=""><div class="">Kierunki</div></a>
-            <a class="main-page__link" href=""><div class="">Kontakt</div></a>
-        </div>
+      <div class="main-page__links">
+        <a class="main-page__link" href="#news"
+          ><div class="">Aktualności</div></a
+        >
+        <a class="main-page__link" href=""><div class="">Plan lekcji</div></a>
+        <a class="main-page__link" href=""><div class="">Kierunki</div></a>
+        <a class="main-page__link" href=""><div class="">Kontakt</div></a>
+      </div>
     </div>
     <div class="news-page">
-        <div class="news-page__title">
-            <h1>Aktualności</h1>
-        </div>
-        <div class="news-page__items" id="news">
-           
-            
-        </div>
+      <div class="news-page__title">
+        <h1>Aktualności</h1>
+      </div>
+      <div class="news-page__items" id="news"></div>
     </div>
     <script>
-        async function getcontent() {
-           
-            const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/posts/`;
-            const response = await fetch( apiUrl);
-            const artykuly = await response.json();
-            artykuly.forEach(el => {
-                let title = el["title"]["rendered"];
-                
-                if(title.includes('&#8211;')){
-                    title = title.replace("&#8211;", '-')
-                }
-                let id = el["id"]
-                console.log(title); 
-                let item = document.createElement("div");
-                item.classList.add("news-page__item");
-                
-                let item_title_box = document.createElement("div");
-                item_title_box.classList.add("news-page__item__title");
-                
-                let item_title = document.createElement("h2");
-                item_title.innerText = title;
-                item_title_box.appendChild(item_title);
-                
-                let item_link_box = document.createElement("div");
-                item_link_box.classList.add("news-page__item__btn");
-                item_link_box.classList.add("btn");
-                
-                let item_link = document.createElement("a");
-                item_link.href = `http://127.0.0.1:5500/goetel.tv-main/json.html#${id}`;
-                item_link.innerHTML = "Czytaj więcej";
-                item_link_box.appendChild(item_link)
+      async function getcontent() {
+        const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/posts/`;
+        const response = await fetch(apiUrl);
+        const artykuly = await response.json();
+        artykuly.forEach((el) => {
+          let title = el["title"]["rendered"];
 
-                item_title.innerText = title;
-                item_title_box.appendChild(item_title);
-                
-                item.appendChild(item_title_box);
-                item.appendChild(item_link_box)
-                
-                document.querySelector(".news-page__items").appendChild(item);
-           
-            });
-         
-        }
-          getcontent()
-    
-            </script>
-</body>
+          if (title.includes("&#8211;")) {
+            title = title.replace("&#8211;", "-");
+          }
+          let id = el["id"];
+          console.log(title);
+          let item = document.createElement("div");
+          item.classList.add("news-page__item");
+
+          let item_title_box = document.createElement("div");
+          item_title_box.classList.add("news-page__item__title");
+
+          let item_title = document.createElement("h2");
+          item_title.innerText = title;
+          item_title_box.appendChild(item_title);
+
+          let item_link_box = document.createElement("div");
+          item_link_box.classList.add("news-page__item__btn");
+          item_link_box.classList.add("btn");
+
+          let item_link = document.createElement("a");
+          item_link.href = `http://127.0.0.1:5500/json.html#${id}`;
+          item_link.innerHTML = "Czytaj więcej";
+          item_link_box.appendChild(item_link);
+
+          item_title.innerText = title;
+          item_title_box.appendChild(item_title);
+
+          item.appendChild(item_title_box);
+          item.appendChild(item_link_box);
+
+          document.querySelector(".news-page__items").appendChild(item);
+        });
+      }
+      getcontent();
+    </script>
+  </body>
 </html>
