@@ -1,0 +1,59 @@
+.swiper-slide {
+  height: 100%;
+}
+.swiper-slide .swiper-slide__img {
+  display: block;
+  max-height: 50vh;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+}
+.image-swiper__arrow-box {
+  display: flex;
+  justify-content: flex-end;
+}
+.image-swiper__arrow--left {
+  transform: scaleX(-1);
+}
+.image-swiper__arrow path {
+  fill: var(--second-color);
+  transition: 0.2s;
+}
+.image-swiper__arrow:active path {
+  fill: var(--second-color-clicked);
+}
+.article__return {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--second-color);
+  width: fit-content;
+  padding: 0 3px 1px 0;
+  gap: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.article__return:active {
+  color: var(--second-color-clicked);
+  border-color: var(--second-color-clicked);
+}
+.article__return path {
+  fill: var(--second-color);
+  transition: 0.2s;
+}
+.article__return:active path {
+  fill: var(--second-color-clicked);
+}
+.article__return:hover {
+  color: var(--second-color-clicked);
+  border-color: var(--second-color-clicked);
+}
+.article__return:hover path {
+  fill: var(--second-color-clicked);
+  transition: 0.2s;
+}
+.article__return svg {
+  transform: scaleX(-1);
+}

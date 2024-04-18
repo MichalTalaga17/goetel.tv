@@ -8,15 +8,19 @@
   </head>
   <body>
     <div class="main-page">
-      <div class="main-page__links">
-        <a class="main-page__link" href="#news"
-          ><div class="">Aktualności</div></a
-        >
-        <a class="main-page__link" href=""><div class="">Plan lekcji</div></a>
-        <a class="main-page__link" href=""><div class="">Kierunki</div></a>
-        <a class="main-page__link" href=""><div class="">Kontakt</div></a>
+      <img src="./assets/IMG_7458.DNG" alt="" class="main-page__bg" />
+      <div class="main-page__shadow">
+        <div class="main-page__links">
+          <a class="main-page__link" href="#news"
+            ><div class="">Aktualności</div></a
+          >
+          <a class="main-page__link" href=""><div class="">Plan lekcji</div></a>
+          <a class="main-page__link" href=""><div class="">Kierunki</div></a>
+          <a class="main-page__link" href=""><div class="">Kontakt</div></a>
+        </div>
       </div>
     </div>
+
     <div class="news-page">
       <div class="news-page__title">
         <h1>Aktualności</h1>
@@ -25,7 +29,7 @@
     </div>
     <script>
       async function getcontent() {
-        const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/posts/`;
+        const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/posts?per_page=4`;
         const response = await fetch(apiUrl);
         const artykuly = await response.json();
         artykuly.forEach((el) => {
@@ -36,8 +40,9 @@
           }
           let id = el["id"];
           console.log(title);
-          let item = document.createElement("div");
+          let item = document.createElement("a");
           item.classList.add("news-page__item");
+          item.href = `http://127.0.0.1:5500/json.html#${id}`;
 
           let item_title_box = document.createElement("div");
           item_title_box.classList.add("news-page__item__title");
@@ -50,8 +55,7 @@
           item_link_box.classList.add("news-page__item__btn");
           item_link_box.classList.add("btn");
 
-          let item_link = document.createElement("a");
-          item_link.href = `https://tv.zsgsucha.pl/json.html#${id}`;
+          let item_link = document.createElement("div");
           item_link.innerHTML = "Czytaj więcej";
           item_link_box.appendChild(item_link);
 

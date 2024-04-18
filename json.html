@@ -17,14 +17,14 @@
 
         margin-top: 40px;
       }
-      .title,
-      .date {
+      .title{
         font-size: 2rem;
         font-weight: 700;
       }
       .container {
         max-width: 1920px;
         margin: 0 auto;
+        padding: 30px 2%;
       }
       li {
         font-size: 1rem;
@@ -36,14 +36,56 @@
         text-decoration: underline;
       }
     </style>
+    <link rel="stylesheet" href="./article.css" />
   </head>
   <body>
     <div class="container">
-      <a href="http://127.0.0.1:5500/goetel.tv-main/index.html">Powrót</a>
+      <a href="http://127.0.0.1:5500/index.html" class="article__return"><svg
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
+          fill="white"
+        />
+        </svg>
+      </svg>Powrót</a>
       <div class="title"></div>
       <div class="date"></div>
       <div class="root"></div>
       <div class="swiper image-swiper">
+        <div class="image-swiper__arrow-box">
+          <div class="image-swiper__arrow image-swiper__arrow--left">
+            <svg
+              fill="none"
+              height="40"
+              viewBox="0 0 24 24"
+              width="40"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
+              />
+            </svg>
+          </div>
+          <div class="image-swiper__arrow image-swiper__arrow--right">
+            <svg
+              fill="none"
+              height="40"
+              viewBox="0 0 24 24"
+              width="40"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
+              />
+            </svg>
+          </div>
+        </div>
+
         <div class="swiper-wrapper"></div>
       </div>
     </div>
@@ -52,7 +94,7 @@
       async function getcontent() {
         let url = document.URL;
 
-        url = url.replace("https://tv.zsgsucha.pl/json.html#", "");
+        url = url.replace("http://127.0.0.1:5500/json.html#", "");
         console.log(url);
         const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/posts/${url}`;
         const response = await fetch(apiUrl);
@@ -68,11 +110,11 @@
             let src = img.src;
             src = src.replace("-360x240", "");
             img.src = src;
-            console.log(src, img.src);
           });
           images.forEach((img) => {
             let slide = document.createElement("div");
             slide.classList.add("swiper-slide");
+            img.classList.add("swiper-slide__img");
             slide.appendChild(img);
 
             swiperWrapper.appendChild(slide);
@@ -80,6 +122,12 @@
 
           var swiper = new Swiper(".image-swiper", {
             loop: true,
+            slidesPerView: 4,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: ".image-swiper__arrow--right",
+                prevEl: ".image-swiper__arrow--left",
+            },
           });
         }
       }
