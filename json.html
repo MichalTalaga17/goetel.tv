@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Artykuł</title>
 
     <link rel="stylesheet" href="./assets/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./style.css" />
@@ -28,6 +28,10 @@
         </svg>
         Powrót</a
       >
+      <button class="click translation">
+        <img src="./assets/pl-flag.png" alt="" class="pl" />
+        <img src="./assets/uk-flag.png" alt="" class="uk" />
+      </button>
       <div class="title"></div>
       <div class="date"></div>
       <div class="root"></div>
@@ -78,7 +82,7 @@
         const title = artykul["title"]["rendered"];
         document.querySelector(".title").innerHTML = title;
         document.querySelector(".root").innerHTML = content;
-        const images = document.querySelectorAll("img");
+        const images = document.querySelector(".root").querySelectorAll("img");
         if (images) {
           let swiperWrapper = document.querySelector(".swiper .swiper-wrapper");
           images.forEach((img) => {
@@ -107,6 +111,52 @@
         }
       }
       getcontent();
+    </script>
+
+    <div id="googleTranslateElement_Init"></div>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "pl" },
+          "googleTranslateElement_Init"
+        );
+      }
+      console.log(document.querySelector("#googleTranslateElement_Init"));
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+      let lang = document.querySelector(".click");
+
+      lang.addEventListener("click", () => {
+        let ukVal = "uk";
+        let plVal = "pl";
+        console.log(
+          document.querySelector(".goog-te-combo").querySelector('[value="pl"]')
+        );
+        if (lang.classList.contains("uk")) {
+          lang.classList.remove("uk");
+          document.querySelector(".goog-te-combo").value = plVal;
+
+          document
+            .querySelector(".goog-te-combo")
+            .dispatchEvent(new Event("change"));
+        } else {
+          lang.classList.add("uk");
+          document.querySelector(".goog-te-combo").value = ukVal;
+
+          document
+            .querySelector(".goog-te-combo")
+            .dispatchEvent(new Event("change"));
+        }
+
+        document
+          .querySelector(".goog-te-combo")
+          .dispatchEvent(new Event("change"));
+      });
+
+      console.log(document.querySelector("#googleTranslateElement_Init"));
     </script>
   </body>
 </html>

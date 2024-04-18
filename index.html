@@ -8,6 +8,10 @@
   </head>
   <body>
     <div class="main-page">
+      <button class="click translation">
+        <img src="./assets/pl-flag.png" alt="" class="pl" />
+        <img src="./assets/uk-flag.png" alt="" class="uk" />
+      </button>
       <img src="./assets/IMG_7458.DNG" alt="" class="main-page__bg" />
       <div class="main-page__shadow">
         <div class="main-page__links">
@@ -29,27 +33,7 @@
       </div>
       <div class="news-page__items" id="news"></div>
     </div>
-    <button class="click">click</button>
-    <div id="googleTranslateElement_Init"></div>
-    <script>
-      //   google.language.translate("Hello world", "en", "es", function (result) {
-      //     if (!result.error) {
-      //       var container = document.getElementById("translation");
-      //       container.innerHTML = result.translation;
-      //     }
-      //   });
-    </script>
-    <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          { pageLanguage: "pl" },
-          "googleTranslateElement_Init"
-        );
-      }
-      console.log(document.querySelector("#googleTranslateElement_Init"));
-    </script>
 
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script>
       async function getcontent() {
         const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/posts?per_page=4`;
@@ -93,6 +77,20 @@
       }
       getcontent();
     </script>
+
+    <div id="googleTranslateElement_Init"></div>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "pl" },
+          "googleTranslateElement_Init"
+        );
+      }
+      console.log(document.querySelector("#googleTranslateElement_Init"));
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script>
       let lang = document.querySelector(".click");
 
@@ -124,8 +122,6 @@
       });
 
       console.log(document.querySelector("#googleTranslateElement_Init"));
-
-      //   window.onload = "test()";
     </script>
   </body>
 </html>
