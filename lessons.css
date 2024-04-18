@@ -1,0 +1,13 @@
+.lessons {
+  min-height: 80vh;
+
+  margin-top: 30px;
+  box-shadow: 5px 12px 61px 0px rgba(125, 125, 125, 1);
+  border-radius: 10px;
+}
+.lessons__object {
+  height: 100%;
+  min-height: 85vh;
+  border-radius: 10px;
+  display: block;
+}

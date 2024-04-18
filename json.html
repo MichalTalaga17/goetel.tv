@@ -4,55 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
     <link rel="stylesheet" href="./assets/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./swiper.css" />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
-      * {
-        font-family: "Oswald", sans-serif;
-      }
-      p {
-        font-size: 1rem;
-
-        margin-top: 40px;
-      }
-      .title{
-        font-size: 2rem;
-        font-weight: 700;
-      }
-      .container {
-        max-width: 1920px;
-        margin: 0 auto;
-        padding: 30px 2%;
-      }
-      li {
-        font-size: 1rem;
-      }
-      p + ul {
-        font-weight: bold;
-      }
-      a {
-        text-decoration: underline;
-      }
-    </style>
+    <style></style>
     <link rel="stylesheet" href="./article.css" />
   </head>
   <body>
     <div class="container">
-      <a href="http://127.0.0.1:5500/index.html" class="article__return"><svg
-        fill="none"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
-          fill="white"
-        />
+      <a href="http://127.0.0.1:5500/index.html" class="article__return"
+        ><svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
+            fill="white"
+          />
         </svg>
-      </svg>Powrót</a>
+        Powrót</a
+      >
       <div class="title"></div>
       <div class="date"></div>
       <div class="root"></div>
@@ -125,8 +100,8 @@
             slidesPerView: 4,
             spaceBetween: 20,
             navigation: {
-                nextEl: ".image-swiper__arrow--right",
-                prevEl: ".image-swiper__arrow--left",
+              nextEl: ".image-swiper__arrow--right",
+              prevEl: ".image-swiper__arrow--left",
             },
           });
         }

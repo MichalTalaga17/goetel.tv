@@ -1,3 +1,26 @@
+p {
+  font-size: 1rem;
+
+  margin-top: 40px;
+}
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 30px 2%;
+}
+li {
+  font-size: 1rem;
+}
+p + ul {
+  font-weight: bold;
+}
+a {
+  text-decoration: underline;
+}
 .swiper-slide {
   height: 100%;
 }
