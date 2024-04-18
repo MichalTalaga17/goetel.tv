@@ -80,3 +80,6 @@ a {
 .article__return svg {
   transform: scaleX(-1);
 }
+.skiptranslate {
+  display: none !important;
+}

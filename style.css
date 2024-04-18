@@ -7,6 +7,7 @@
 }
 :root {
   --black: #000000;
+  --link-color: #aaaaaaf0;
   --second-color: #eeeeeee3;
   --second-color-clicked: #fefefeff;
 }
@@ -64,14 +65,14 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--black);
-  background-color: var(--second-color);
+  background-color: var(--link-color);
   width: 20vw;
   height: 18vh;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: #000000 1px 1px 1px 1px;
-  box-shadow: 12px 8px 51px 0px rgba(25, 25, 25, 1);
+  box-shadow: 5px 3px 35px 0px rgba(25, 25, 25, 1);
   border-radius: 5px;
   transition: 0.2s;
 }
@@ -137,10 +138,16 @@ a {
 .news-page__title {
   font-size: 1rem;
   font-weight: 700;
-  background-color: var(--second-color-clicked);
+  background-color: var(--second-color);
   color: var(--black);
   padding: 2%;
   width: 25%;
   right: 0;
   position: relative;
+}
+#googleTranslateElement_Init {
+  opacity: 0;
+}
+.skiptranslate {
+  display: none !important;
 }
