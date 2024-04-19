@@ -12,7 +12,9 @@
   </head>
   <body>
     <div class="container">
-      <a href="http://127.0.0.1:5500/kierunki.html" class="article__return"
+      <a
+        href="https://tv.zsgsucha.pl/kierunki.html"
+        class="article__return custom_back"
         ><svg
           fill="none"
           height="24"
@@ -67,7 +69,50 @@
       </div>
     </div>
     <div id="googleTranslateElement_Init"></div>
+    <script src="./assets/swiper/swiper-bundle.min.js"></script>
+    <script>
+      async function getcontent() {
+        let url = document.URL;
 
+        url = url.replace("https://tv.zsgsucha.pl/kierunek.html#", "");
+        console.log(url);
+        const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/pages/${url}`;
+        const response = await fetch(apiUrl);
+        const artykul = await response.json();
+        const content = artykul["content"]["rendered"];
+        const title = artykul["title"]["rendered"];
+        document.querySelector(".title").innerHTML = title;
+        document.querySelector(".root").innerHTML = content;
+        const images = document.querySelector(".root").querySelectorAll("img");
+        if (images) {
+          let swiperWrapper = document.querySelector(".swiper .swiper-wrapper");
+          images.forEach((img) => {
+            let src = img.src;
+            src = src.replace("-360x240", "");
+            img.src = src;
+          });
+          images.forEach((img) => {
+            let slide = document.createElement("div");
+            slide.classList.add("swiper-slide");
+            img.classList.add("swiper-slide__img");
+            slide.appendChild(img);
+
+            swiperWrapper.appendChild(slide);
+          });
+
+          var swiper = new Swiper(".image-swiper", {
+            loop: true,
+            slidesPerView: 3,
+            spaceBetween: 20,
+            navigation: {
+              nextEl: ".image-swiper__arrow--right",
+              prevEl: ".image-swiper__arrow--left",
+            },
+          });
+        }
+      }
+      getcontent();
+    </script>
     <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement(
@@ -110,50 +155,6 @@
       });
 
       console.log(document.querySelector("#googleTranslateElement_Init"));
-    </script>
-    <script src="./assets/swiper/swiper-bundle.min.js"></script>
-    <script>
-      async function getcontent() {
-        let url = document.URL;
-
-        url = url.replace("http://127.0.0.1:5500/kierunek.html#", "");
-        console.log(url);
-        const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/pages/${url}`;
-        const response = await fetch(apiUrl);
-        const artykul = await response.json();
-        const content = artykul["content"]["rendered"];
-        const title = artykul["title"]["rendered"];
-        document.querySelector(".title").innerHTML = title;
-        document.querySelector(".root").innerHTML = content;
-        const images = document.querySelector(".root").querySelectorAll("img");
-        if (images) {
-          let swiperWrapper = document.querySelector(".swiper .swiper-wrapper");
-          images.forEach((img) => {
-            let src = img.src;
-            src = src.replace("-360x240", "");
-            img.src = src;
-          });
-          images.forEach((img) => {
-            let slide = document.createElement("div");
-            slide.classList.add("swiper-slide");
-            img.classList.add("swiper-slide__img");
-            slide.appendChild(img);
-
-            swiperWrapper.appendChild(slide);
-          });
-
-          var swiper = new Swiper(".image-swiper", {
-            loop: true,
-            slidesPerView: 3,
-            spaceBetween: 20,
-            navigation: {
-              nextEl: ".image-swiper__arrow--right",
-              prevEl: ".image-swiper__arrow--left",
-            },
-          });
-        }
-      }
-      getcontent();
     </script>
   </body>
 </html>

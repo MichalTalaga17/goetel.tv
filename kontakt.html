@@ -2,17 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/article.css" />
+    <link rel="stylesheet" href="./fields.css" />
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./lessons.css" />
+    <link rel="stylesheet" href="./article.css" />
+    <link rel="stylesheet" href="./contact.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container contact-container">
       <a href="https://tv.zsgsucha.pl/index.html" class="article__return"
         ><svg
           fill="none"
@@ -32,16 +30,21 @@
         <img src="./assets/pl-flag.png" alt="" class="pl" />
         <img src="./assets/uk-flag.png" alt="" class="uk" />
       </button>
-      <div class="lessons">
-        <object
-          data="https://zsgsucha.pl/planlekcji/"
-          width="100%"
-          height="100%"
-          class="lessons__object"
-        ></object>
-      </div>
+      <div class="root"></div>
     </div>
 
+    <script>
+      async function getContent() {
+        let root = document.querySelector(".root");
+
+        const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/pages/120`;
+        const response = await fetch(apiUrl);
+        const responseVal = await response.json();
+        const content = responseVal["content"]["rendered"];
+        root.innerHTML = content;
+      }
+      getContent();
+    </script>
     <div id="googleTranslateElement_Init"></div>
 
     <script type="text/javascript">
@@ -51,7 +54,6 @@
           "googleTranslateElement_Init"
         );
       }
-      console.log(document.querySelector("#googleTranslateElement_Init"));
     </script>
 
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -84,8 +86,6 @@
           .querySelector(".goog-te-combo")
           .dispatchEvent(new Event("change"));
       });
-
-      console.log(document.querySelector("#googleTranslateElement_Init"));
     </script>
   </body>
 </html>

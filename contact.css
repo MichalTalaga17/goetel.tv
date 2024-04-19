@@ -1,0 +1,21 @@
+.contact-container .root {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+.contact-container .root * {
+  width: 100%;
+}
+.contact-container .root img,
+.contact-container .root h2 {
+  width: auto;
+  height: auto;
+}
+.contact-container .root iframe {
+  width: 100%;
+  height: 30vh;
+  margin-top: 30px;
+}
