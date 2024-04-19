@@ -45,11 +45,6 @@
         const responseVal = await response.json();
         const content = responseVal["content"]["rendered"];
         root.innerHTML = content;
-        document.querySelectorAll("*").forEach((el) => {
-          el.addEventListener("click", () => {
-            event.preventDefault();
-          });
-        });
       }
       getContent();
     </script>
