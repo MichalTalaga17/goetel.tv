@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./contact.css" />
   </head>
   <body>
-    <div class="container contact-container">
+    <div class="container">
       <a href="https://tv.zsgsucha.pl/index.html" class="article__return"
         ><svg
           fill="none"
@@ -30,7 +30,10 @@
         <img src="./assets/pl-flag.png" alt="" class="pl" />
         <img src="./assets/uk-flag.png" alt="" class="uk" />
       </button>
+    </div>
+    <div class="container contact-container">
       <div class="root"></div>
+      <div class="box"></div>
     </div>
 
     <script>
@@ -42,9 +45,15 @@
         const responseVal = await response.json();
         const content = responseVal["content"]["rendered"];
         root.innerHTML = content;
+        document.querySelectorAll("*").forEach((el) => {
+          el.addEventListener("click", () => {
+            event.preventDefault();
+          });
+        });
       }
       getContent();
     </script>
+
     <div id="googleTranslateElement_Init"></div>
 
     <script type="text/javascript">
