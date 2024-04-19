@@ -152,8 +152,8 @@ a {
   position: absolute;
   background: transparent;
   border: 0px;
-  right: 10vw;
-  top: 30px;
+  right: calc(10vw - 20px);
+  top: 50px;
   display: block;
   max-height: 40px;
   height: 40px;
@@ -163,7 +163,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(0%, 0%);
+  transform: translate(-50%, -50%);
   width: 40px;
   transition: 0.2s;
   height: 40px;
@@ -173,7 +173,7 @@ a {
   border-radius: 50%;
 }
 .container .translation {
-  right: 5vw;
+  right: calc(5vw - 20px);
 }
 .translation .uk {
   display: block;
@@ -200,4 +200,7 @@ a {
   width: 40px;
   height: 40px;
   opacity: 1;
+}
+span {
+  color: var(--second-color) !important;
 }

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./article.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./lessons.css" />
+    <link rel="stylesheet" href="./fields.css" />
+  </head>
+  <body>
+    <div class="container fields">
+      <a href="http://127.0.0.1:5500/index.html" class="article__return"
+        ><svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
+            fill="white"
+          />
+        </svg>
+        Powrót</a
+      >
+      <button class="click translation">
+        <img src="./assets/pl-flag.png" alt="" class="pl" />
+        <img src="./assets/uk-flag.png" alt="" class="uk" />
+      </button>
+      <div class="title">Kierunki:</div>
+      <div class="root"></div>
+      <div class="img-box"></div>
+    </div>
+    <script>
+      async function getContent() {
+        let root = document.querySelector(".root");
+        let imgBox = document.querySelector(".img-box");
+        const apiUrl = `https://zsgsucha.pl/wp-json/wp/v2/pages/114`;
+        const response = await fetch(apiUrl);
+        const responseVal = await response.json();
+        const content = responseVal["content"]["rendered"];
+        root.innerHTML = content;
+        const images = root.querySelectorAll("img");
+        const links = root.querySelectorAll("a");
+        let blockade = true;
+        links.forEach((link) => {
+          link.addEventListener("click", () => {
+            if (blockade) {
+              event.preventDefault();
+            }
+          });
+        });
+        if (images) {
+          images.forEach((el) => {
+            imgBox.appendChild(el);
+          });
+        }
+        const searchUrl = `https://zsgsucha.pl/wp-json/wp/v2/pages?parent=114&per_page=100`;
+        const searchResponse = await fetch(searchUrl);
+        const searchValue = await searchResponse.json();
+        const search2Url = `https://zsgsucha.pl/wp-json/wp/v2/pages?parent=0&per_page=100`;
+        const search2Response = await fetch(search2Url);
+        const search2Value = await search2Response.json();
+
+        links.forEach((el) => {
+          let id = el.href;
+          searchValue.forEach((page) => {
+            if (page.link == id) {
+              el.setAttribute("pageId", page["id"]);
+              el.href = `http://127.0.0.1:5500/kierunek.html#${page["id"]}`;
+              searchValue.splice(searchValue.indexOf(page), 1);
+            }
+          });
+          search2Value.forEach((page) => {
+            if (page.link == id) {
+              el.setAttribute("pageId", page["id"]);
+              el.href = `http://127.0.0.1:5500/kierunek.html#${page["id"]}`;
+              search2Value.splice(search2Value.indexOf(page), 1);
+            }
+          });
+        });
+        blockade = false;
+      }
+      getContent();
+    </script>
+    <div id="googleTranslateElement_Init"></div>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "pl" },
+          "googleTranslateElement_Init"
+        );
+      }
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+      let lang = document.querySelector(".click");
+
+      lang.addEventListener("click", () => {
+        let ukVal = "uk";
+        let plVal = "pl";
+        console.log(
+          document.querySelector(".goog-te-combo").querySelector('[value="pl"]')
+        );
+        if (lang.classList.contains("uk")) {
+          lang.classList.remove("uk");
+          document.querySelector(".goog-te-combo").value = plVal;
+
+          document
+            .querySelector(".goog-te-combo")
+            .dispatchEvent(new Event("change"));
+        } else {
+          lang.classList.add("uk");
+          document.querySelector(".goog-te-combo").value = ukVal;
+
+          document
+            .querySelector(".goog-te-combo")
+            .dispatchEvent(new Event("change"));
+        }
+
+        document
+          .querySelector(".goog-te-combo")
+          .dispatchEvent(new Event("change"));
+      });
+    </script>
+  </body>
+</html>
