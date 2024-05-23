@@ -204,3 +204,19 @@ a {
 span {
   color: var(--second-color) !important;
 }
+.doc-link {
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+.doc-container h1 {
+  text-align: center;
+}
+.container.doc-container {
+  padding-bottom: 55px;
+}
+.doc-h2 {
+  margin-top: 50px;
+  text-align: center;
+}
