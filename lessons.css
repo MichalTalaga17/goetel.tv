@@ -11,3 +11,11 @@
   border-radius: 10px;
   display: block;
 }
+.doc-container .lessons {
+  min-height: 80vh;
+  width: 65%;
+  margin: 30px auto 0;
+
+  box-shadow: 5px 6px 31px 0px rgba(125, 125, 125, 1);
+  border-radius: 10px;
+}
